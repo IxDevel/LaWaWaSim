@@ -1,5 +1,9 @@
 from routes.ped_queue import PedQueue
 
+CreateTripsCSV = 'CSV/' + 'CreateTripsCSV.csv'
+prueba = open('CSV/' + 'CreateTripsCSV.csv', 'w')
+titulador = 'UserId,TripId,TA,ST,AT,OPED,TPED\n'
+prueba.write(titulador)
 
 class PedsQueuePrinter:
 
