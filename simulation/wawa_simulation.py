@@ -19,6 +19,13 @@ from units.enums.unit_state_type import UnitStateType
 from units.unit import Unit
 
 
+FinishTripsCSV = 'CSV/' + 'FinishTripsCSV.csv'
+prueba = open('CSV/' + 'FinishTripsCSV.csv', 'w')
+titulador ='Trip ended,UserId,UnitId,OPED,TPED,TA,ST,AT,DistRec\n'
+
+prueba.write(titulador)
+
+
 def from_datetime(c_datetime: datetime):
     return datetime(
         year=c_datetime.year,
@@ -273,6 +280,8 @@ class WaWaSimulation:
                                   passenger.trip.arrival_ped.uid, str(passenger.trip.time_of_application),
                                   str(passenger.trip.starting_time), str(passenger.trip.arrival_time),
                                   passenger.trip.distance))
+                    lista = str('{:3d}'.format(passenger.trip.uid))+','+ str('{:3d}'.format(passenger.uid))+','+str('{:3d}'.format(travel.unit.uid))+','+str('{:3d}'.format(passenger.trip.starting_ped.uid))+','+str('{:3d}'.format(passenger.trip.arrival_ped.uid))+','+str('{:19s}'.format(str(passenger.trip.time_of_application)))+','+str('{:19s}'.format(str(passenger.trip.starting_time)))+','+str('{:19s}'.format(str(passenger.trip.arrival_time)))+','+str('{:12.8f}'.format(passenger.trip.distance))+'\n'
+                    prueba.write(lista)
                     # Clear passenger trip
                     passenger.trip = None
 
